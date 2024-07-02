@@ -1,8 +1,10 @@
-import json
-from asgiref.sync import sync_to_async
-
 from channels.auth import login, logout
 from channels.generic.websocket import AsyncWebsocketConsumer
+
+import json
+from datetime import datetime
+from asgiref.sync import sync_to_async
+
 
 from . models import Message
 
@@ -92,5 +94,5 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     @sync_to_async
     def save_message(self, message, username, room):
-        Message.objects.create(
+        message = Message.objects.create(
             message = message, user = username, conv_id = room)

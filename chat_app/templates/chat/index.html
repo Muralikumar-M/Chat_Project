@@ -1,4 +1,4 @@
-{% extends "chat/base.html" %} {% load crispy_forms_tags %} {% block content %}
+{% extends "chat/base.html" %} {% load crispy_forms_tags %} {% block content %} {% load static %}
 <div class="d-flex h-100">
   <div class="h-100 p-2 rounded" style="width: 30%; background-color: #f1f5fe; overflow-y: auto;">
     <div class="m-2 mb-5" style="position: relative;">
@@ -52,8 +52,8 @@
   </div>
   <div class="rounded" id="chatdialogspace" style="width: 70%; background-color:#fff; overflow-y: auto;">
     {% if not room_name %}
-    <div class="w-100 h-100 d-flex justify-content-center align-items-center" style="background-color:#e9ebf0">
-      <h1>No Conversations Here...</h1>
+    <div class="w-100 h-100 d-flex justify-content-center align-items-center" style="background: transparent url(http://192.168.1.10:9000/media/loader.gif)  center no-repeat;">
+      <img src="{{chat_img}}" class="w-100" />
     </div>
     {% endif %}
     {% block chat %} {% endblock chat %}

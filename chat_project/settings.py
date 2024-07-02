@@ -138,14 +138,18 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
-
-USE_TZ = True
+## Django Localization System (Format dates, number, calenders according to the current locale)
+USE_L10N = True
+## Used to enable timezone awareness
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+## Used to specify the all folders that may contain the statis files that you want.
+STATICFILES_DIRS = ('/home/murali/Desktop/Projects/Chat_Project/chat_app/static',)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -159,3 +163,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 IMAGE_URL = 'http://192.168.1.10:9000/media/'
+

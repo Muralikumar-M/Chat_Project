@@ -20,10 +20,10 @@
 
 <body class="w-100 h-100">
     <div class="h-100 bg-light row">
-        <div class="col-sm-6">
-            <p>Space for image</p>
+        <div class="col-sm-7 d-flex justify-content-center align-items-center bg-white">
+            <img src="{{ image_url }}"  class="w-100 center" />
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-5">
             {% block content %} {% endblock %}
         </div>
     </div>

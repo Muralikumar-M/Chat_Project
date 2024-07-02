@@ -3,7 +3,9 @@
   <div>
     {% for conversation in conversations %}
     {% if conversation.conv_id == room_name %}
+
     <span class="d-flex">
+      <a href="/home" class="mt-4 ml-3 mr-3"><i class="bi bi-box-arrow-left h3 " style="cursor: pointer;"></i></a>
       <img class="rounded-circle" style="max-height: 80px; max-width: 80px; vertical-align: middle;"
         src="{{conversation.secProfile}}" />
       <span>
@@ -74,7 +76,7 @@
               document.querySelector('#chat-log').innerHTML += html
             }
             else {
-              let html = `<div class="d-flex justify-content-start">
+              let html = `<div class="d-inline-flex justify-content-start">
                         <div class="w-50 d-flex justify-content-between rounded p-2 m-2" 
                             style="background-color: #f1f5fe; overflow-wrap: break-word;">
                             <p class="m-0 pr-5" > ${data.message} </p>
@@ -119,6 +121,21 @@
           );
           messageInputDom.value = '';
         };
+
+        function backToChat() {
+          $.ajax({
+            url: '/home/',
+            type: "GET",
+            headers: { "X-CSRFToken": document.cookie.split('=')[1] },
+            success: (data) => {
+              document.in
+            },
+            error: (error) => {
+              alert(error)
+            }
+          }
+          )
+        }
       </script>
       {% endblock scripts %}
     </div>

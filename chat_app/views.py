@@ -8,6 +8,7 @@ from rest_framework.response import Response
 
 import os
 
+
 from chat_project.settings import IMAGE_URL
 from .forms import LoginForm, RegistrationForm, RoomForm
 from .models import UserAccount, Message, Conversations
@@ -15,6 +16,7 @@ from .serializers import UserIdSerializer
 # Create your views here.
 
 def login(request):
+
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -28,7 +30,7 @@ def login(request):
     else:
         form = LoginForm()
 
-    return render(request, 'users/login.html', {'loginform': form})
+    return render(request, 'users/login.html', {'loginform': form, 'image_url': os.path.join(IMAGE_URL, 'login.jpeg')})
 
 
 def register(request):
@@ -42,7 +44,7 @@ def register(request):
     else:
         form = RegistrationForm()
 
-    return render(request, 'users/register.html', { 'registerform': form })
+    return render(request, 'users/register.html', { 'registerform': form, 'image_url': os.path.join(IMAGE_URL, 'login.jpeg') })
 
 
 def chat_home(request):
@@ -57,7 +59,7 @@ def chat_home(request):
                                                'avail_users': avail_users,'image_url': os.path.join(str(IMAGE_URL), request.session['user']['profile_pic'])})
     
     return render(request, 'chat/index.html', { 'user': request.session['user'], 'conversations': conversations, 'avail_users': avail_users,
-                                               'image_url': os.path.join(str(IMAGE_URL), request.session['user']['profile_pic'])})   
+                                               'image_url': os.path.join(str(IMAGE_URL), request.session['user']['profile_pic']), 'chat_img': os.path.join(str(IMAGE_URL), 'chat.jpeg')})   
 
         
 
