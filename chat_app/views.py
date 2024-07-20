@@ -7,7 +7,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 
 import os
-
+from datetime import datetime
 
 from chat_project.settings import IMAGE_URL
 from .forms import LoginForm, RegistrationForm, RoomForm
@@ -54,7 +54,7 @@ def chat_home(request):
     avail_users = UserAccount.objects.exclude(id__in = excluded_users).values('id', 'firstname')
     if request.method == 'POST':
         conv_id = request.POST['conv_id']
-        db_messages = Message.objects.filter(conv_id = conv_id)[:]
+        db_messages = Message.objects.filter(conv_id = conv_id, created_at__date = datetime.now().date())[:]
         return render(request, 'chat/chatroom.html', {'room_name': conv_id, 'db_messages': db_messages, 'conversations': conversations,'user': request.session['user'], 'conversations': conversations,
                                                'avail_users': avail_users,'image_url': os.path.join(str(IMAGE_URL), request.session['user']['profile_pic'])})
     

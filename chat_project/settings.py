@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -149,7 +150,9 @@ USE_TZ = False
 
 STATIC_URL = 'static/'
 ## Used to specify the all folders that may contain the statis files that you want.
-STATICFILES_DIRS = ('/home/murali/Desktop/Projects/Chat_Project/chat_app/static',)
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -164,3 +167,4 @@ MEDIA_URL = '/media/'
 
 IMAGE_URL = 'http://192.168.1.10:9000/media/'
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage' 

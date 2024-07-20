@@ -4,6 +4,6 @@ chat_env/bin
 chat_env/lib
 chat_env/lib64
 
-*.env
+
 *.cfg
 *.pyc
